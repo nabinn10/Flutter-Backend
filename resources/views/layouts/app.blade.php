@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>The Online Liquor Vault</title>
+    <title>The Blogs</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -48,14 +48,14 @@
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{route('categories.index')}}"
                         class="flex items-center px-4 py-2 rounded-md transition-colors text-gray-900 hover:bg-blue-600 hover:text-white">
                         <i class='bx bx-home-alt text-2xl text-gray-900'></i>
                         <span class="ml-3">Category</span>
                     </a>
                 </li>
                 <li>
-                    <a href=""
+                    <a href="{{route('posts.index')}}"
                         class="flex items-center px-4 py-2 rounded-md transition-colors text-gray-900 hover:bg-blue-600 hover:text-white">
                         <i class='bx bx-home-alt text-2xl text-gray-900'></i>
                         <span class="ml-3">Posts</span>
@@ -89,7 +89,7 @@
                 <button id="menu-toggle" class="lg:hidden bg-blue-900 text-white p-2 rounded-md">
                     <i class='bx bx-menu'></i>
                 </button>
-                <h1 class="ml-4 text-xl md:text-2xl lg:text-3xl font-bold text-red-900">The Blogs</h1>
+                <h1 class="ml-4 text-xl md:text-2xl lg:text-3xl font-bold text-red-900">@yield('')</h1>
             </header>
 
             <!-- Main Content Placeholder -->

@@ -6,9 +6,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [PagessController::class, 'welcome'])->name('welcome');
+
+
+Route::get('/postsview/{post}', [PagessController::class, 'postview'])->name('postview');
+
+
 
 
 Route::middleware('auth')->group(function () {

@@ -1,23 +1,22 @@
 @extends('layouts.master')
 
-
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <h1 class="text-3xl font-bold text-gray-800 mb-6">Latest Posts</h1>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($posts as $post)
-                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-                    @if($post->photo && file_exists(public_path($post->photo)))
-                        <img src="{{ asset('images/posts'.$post->photo) }}" alt="Post Image" class="w-full h-48 object-cover">
-                    @else
-                        <div class="w-full h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-sm">No Image</div>
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+
+                    {{-- Show image if exists --}}
+                    @if($post->photo)
+                        <img src="{{ asset('images/posts/' . $post->photo) }}" alt="Post Image" class="w-full h-48 object-cover rounded-t-lg">
                     @endif
 
                     <div class="p-4">
                         <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $post->title }}</h2>
                         <p class="text-sm text-gray-600 mb-1">
-                            Category: <span class="font-medium">{{ $post->category->name ?? 'Uncategorized' }}</span>
+                            Category: <span class="font-medium">{{ $post->category->category_name ?? 'Uncategorized' }}</span>
                         </p>
                         <p class="text-gray-700 text-sm mb-4">
                             {{ \Illuminate\Support\Str::limit(strip_tags($post->body), 100) }}

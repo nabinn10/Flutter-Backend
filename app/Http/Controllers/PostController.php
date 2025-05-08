@@ -32,10 +32,14 @@ class PostController extends Controller
         $data = $request->except('photo');
         $data['user_id'] = auth()->id(); // enforce auth user
 
-        if ($request->hasFile('photo')) {
-            $data['photo'] = $request->file('photo')->store('posts', 'public');
+         // Handle file upload
+         if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $photoname = time() . '.' . $photo->extension();
+            $photo->move(public_path('images/posts/'), $photoname);
+            $data['photo'] = $photoname;
         }
-
+// dd($data);
         Post::create($data);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');

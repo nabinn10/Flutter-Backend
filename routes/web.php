@@ -16,6 +16,14 @@ Route::get('/postsview/{post}', [PagessController::class, 'postview'])->name('po
 
 
 Route::middleware('auth')->group(function () {
+
+    // for favourite
+    // Route::get('/favourite', [PagessController::class, 'favourite'])->name('posts.favourite');
+
+    Route::post('/posts/{post}/favourite', [PagessController::class, 'favourite'])->name('posts.favourite');
+// web.php
+Route::post('/posts/{post}/toggle-favourite', [PagessController::class, 'toggleFavourite'])->name('posts.favourite');
+
     Route::get('/dashboard', [PagessController::class, 'dashboard'])->name('dashboard');
 
 
